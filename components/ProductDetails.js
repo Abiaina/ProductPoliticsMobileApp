@@ -13,7 +13,7 @@ export default class ProductDetails extends React.Component {
       super(props);
       this.state = {
         update: 'this is the initial value',
-        backendUrl: `https://p4api.herokuapp.com/company_details/`,
+        backendUrl: `https://product2politics.herokuapp.com/company_details/`,
         upcUrl: 'https://api.upcitemdb.com/prod/trial/lookup?upc=',
         status: 'none',
         brand:'unknown',
