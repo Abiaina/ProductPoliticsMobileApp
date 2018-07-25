@@ -13,7 +13,7 @@ export default class ProductDetails extends React.Component {
       super(props);
       this.state = {
         update: 'this is the initial value',
-        backendUrl: `https://product2politics.herokuapp.com/company_details/`,
+        backendUrl: `https://product2politics.herokuapp.com/company_details/company_details/`,
         upcUrl: 'https://api.upcitemdb.com/prod/trial/lookup?upc=',
         status: 'none',
         brand:'unknown',
@@ -31,7 +31,8 @@ export default class ProductDetails extends React.Component {
     axios.get(this.state.backendUrl + this.state.brand)
     .then ((response) => {
       const data = response.data;
-
+      conole.log(data);
+      console.log(`urlbackend: ${this.state.backendUrl} ${this.state.brand}`))
       this.setState({
         parentCompany: data.company_name,
         lobbyingDollars: data.lobbying_dollars,
@@ -53,12 +54,12 @@ export default class ProductDetails extends React.Component {
   componentDidMount = () => {
     axios.get(this.state.upcUrl + String(this.props.barcode))
     .then ((response) => {
+      console.log(response.data);
       this.setState({
         brand: response.data.items[0].brand,
       }, this.getCompanyPolitics)
     })
     .catch((error) => {
-      console.log(error);
       this.setState({
         status: error,
       })

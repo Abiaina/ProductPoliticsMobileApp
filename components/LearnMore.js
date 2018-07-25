@@ -8,7 +8,7 @@ export default class LearnMore extends Component {
       <View style={styles.dataContainer}>
 
         <Button
-          title="Open URL with Expo.WebBrowser"
+          title="Learn More on Open Secrets"
           onPress={this._handleOpenWithWebBrowser}
           style={styles.button}
         />
@@ -23,5 +23,15 @@ export default class LearnMore extends Component {
 }
 
 const styles = StyleSheet.create({
-
+  button: {
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    padding: 12,
+    margin: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    borderWidth: 2,
+    width: 100,
+    borderColor: 'rgba(255, 255, 255, 0.35)',
+  },
 });
