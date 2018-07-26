@@ -13,8 +13,7 @@ export default class ProductDetails extends React.Component {
       super(props);
       this.state = {
         update: 'this is the initial value',
-        backendUrl: `https://product2politics.herokuapp.com/company_details/company_details/`,
-        upcUrl: 'https://api.upcitemdb.com/prod/trial/lookup?upc=',
+        backendUrl: `https://product2politics.herokuapp.com/company_details/`,
         status: 'none',
         brand:'unknown',
         parentCompany: "unknown",
@@ -27,12 +26,10 @@ export default class ProductDetails extends React.Component {
         };
     }
 
-  getCompanyPolitics = () => {
-    axios.get(this.state.backendUrl + this.state.brand)
+  componentDidMount = () => {
+    axios.get(this.state.backendUrl + this.props.barcode)
     .then ((response) => {
       const data = response.data;
-      conole.log(data);
-      console.log(`urlbackend: ${this.state.backendUrl} ${this.state.brand}`))
       this.setState({
         parentCompany: data.company_name,
         lobbyingDollars: data.lobbying_dollars,
@@ -41,23 +38,9 @@ export default class ProductDetails extends React.Component {
         contributionDollars: data.contribution_dollars,
         mostLobbiedBill: data.most_lobbied_bill,
         mlbDescription: data.mlb_description,
-        companyOSID: data.company.opensecretid
+        companyOSID: data.opensecretid,
+        imgUrl: data.product_url
       })
-    })
-    .catch((error) => {
-      this.setState({
-        status: error,
-      })
-    });
-  }
-
-  componentDidMount = () => {
-    axios.get(this.state.upcUrl + String(this.props.barcode))
-    .then ((response) => {
-      console.log(response.data);
-      this.setState({
-        brand: response.data.items[0].brand,
-      }, this.getCompanyPolitics)
     })
     .catch((error) => {
       this.setState({
@@ -67,7 +50,6 @@ export default class ProductDetails extends React.Component {
   }
 
   render() {
-console.log(this.state.topRecipients);
 
     return (
       <ScrollView>
@@ -75,8 +57,7 @@ console.log(this.state.topRecipients);
           <View style={styles.parentCompany}>
             <Text style={{ fontSize: 20,
               fontWeight: 'bold',}}>Political Activity of {this.state.parentCompany}</Text>
-            <Text style={{ fontSize: 12,
-              fontWeight: 'bold',}}>{this.state.brand} is a subsidiary of {this.state.parentCompany}</Text>
+                <Image source={require(this.state.imgUrl)}/>
           </View>
 
           <View style={styles.data}>
@@ -135,11 +116,11 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
   },
   parentCompany: {
-    height: 50,
+    height: 80,
     alignItems: 'center',
     justifyContent: 'flex-start',
     flexDirection: 'column',
-    alignSelf: 'stretch',
+    alignSelf: 'center',
   },
   data: {
     flex: 1,

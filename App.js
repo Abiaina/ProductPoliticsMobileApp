@@ -76,6 +76,16 @@ export default class App extends React.Component {
     )
   }
 
+  showLogo() {
+    return(
+    <View style={styles.logoContainer}>
+      <Image source={require('./P2.png')}/>
+      <Text style={{fontSize: 30,
+        fontWeight: 'bold',}}>Product To Politics</Text>
+    </View>
+  )
+  }
+
   handleOnBarcodeScan(data) {
     this.setState({
       barcodeData: data,
@@ -90,20 +100,17 @@ export default class App extends React.Component {
             colors={['white', 'rgb(30,144,255)']}
             style={{alignItems: 'center', flex: 1, alignSelf: 'stretch' }}>
 
-          <View style={styles.header}>
-            <Image source={require('./P2.png')}/>
-            <Text style={{fontSize: 12,
-              fontWeight: 'bold',}}>Product To Politics</Text>
-          </View>
           <View style={styles.dataContainer}>
+
           {(this.state.barcodeData !== null) ?
-             this.showProduct() : ((this.state.scanBarcode) ? this.showScanContainer() : this.scanButton())
+             this.showProduct() : ((this.state.scanBarcode) ? this.showScanContainer() : this.showLogo())
           }
           </View>
 
           <View style={styles.navButtonContainer}>
+
             <View>
-              {this.state.home ? <Text></Text> : this.homeButton()}
+              {this.state.home ? this.scanButton() : this.homeButton()}
             </View>
             <Definition/>
             <About/>
@@ -176,7 +183,13 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       padding: 25,
     },
-    dataText: {
-
+    logoContainer: {
+      flex: 1,
+      alignSelf: 'stretch',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      padding: 40,
     },
+
 });
