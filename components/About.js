@@ -11,7 +11,7 @@ export default class About extends Component {
   _renderButton = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
-        <Text style={{ color:'white' }}>{text}</Text>
+        <Text style={{ color:'black', fontWeight: 'bold' }}>{text}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -27,7 +27,7 @@ export default class About extends Component {
       <View style={styles.data}>
         <Text style={styles.dataTitle}>Data Sources</Text>
         <Text> - Open Secrets API</Text>
-        <Text> - upcitemdb API</Text>
+        <Text> - EANdata API</Text>
         <Text> - {'govtrack.us'}</Text>
       </View>
         {this._renderButton('Close', () => this.setState({ visibleModal: null }))}
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
     padding: 12,
     margin: 16,
     justifyContent: 'center',
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     borderWidth: 2,
     width: 100,
-    borderColor: 'rgba(255, 255, 255, 0.35)',
+    borderColor: 'rgb(0, 0, 0)',
   },
   modalContent: {
     backgroundColor: 'white',

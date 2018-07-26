@@ -46,7 +46,7 @@ export default class App extends React.Component {
   _renderButton = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
-        <Text style={{ color:'white' }}>{text}</Text>
+        <Text style={{ color:'black', fontWeight:'bold' }}>{text}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -79,7 +79,9 @@ export default class App extends React.Component {
   showLogo() {
     return(
     <View style={styles.logoContainer}>
-      <Image source={require('./P2.png')}/>
+      <Image
+       source={require('./barcode_search.png')}
+       />
       <Text style={{fontSize: 30,
         fontWeight: 'bold',}}>Product To Politics</Text>
     </View>
@@ -97,7 +99,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
       <LinearGradient
-            colors={['white', 'rgb(30,144,255)']}
+            colors={['#4DF9D6', '#4DA6F9']}
             style={{alignItems: 'center', flex: 1, alignSelf: 'stretch' }}>
 
           <View style={styles.dataContainer}>
@@ -142,7 +144,7 @@ const styles = StyleSheet.create({
       padding: 10,
     },
     button: {
-      backgroundColor: 'rgba(0, 0, 0, 0.6)',
+      backgroundColor: 'rgba(255, 255, 255, 0.2)',
       padding: 10,
       margin: 10,
       justifyContent: 'center',
@@ -150,7 +152,7 @@ const styles = StyleSheet.create({
       borderRadius: 4,
       borderWidth: 2,
       width: 100,
-      borderColor: 'rgba(255, 255, 255, 0.35)',
+      borderColor: 'rgb(0, 0, 0)',
     },
     navButtonContainer: {
       alignSelf: 'center',

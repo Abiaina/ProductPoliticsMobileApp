@@ -11,7 +11,7 @@ export default class Definition extends Component {
   _renderButton = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
       <View style={styles.button}>
-        <Text style={{ color:'white' }}>{text}</Text>
+        <Text style={{ color:'black', fontWeight: 'bold' }}>{text}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
     padding: 12,
     margin: 16,
     width: 100,
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 4,
     borderWidth: 2,
-    borderColor: 'rgba(255, 255, 255, 0.35)',
+    borderColor: 'rgb(0, 0, 0)',
   },
   modalContent: {
     backgroundColor: 'white',
